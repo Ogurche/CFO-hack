@@ -26,13 +26,20 @@ def add_text_and_pdf(request):
     return render(request, 'text_box.html')
 
 def pages (request):
-    test_json = {'key':'test_json1123124312412фывфывфаыфывафы'
-                 ,'key2':'teфывфывдоотрлыофваплыропst_json2'
-                 ,'key3':'test_jsoыфвадлорплжлдвфпрашлрпждвыдапоьджлыфвллорашгирдn3'
-                 ,'key4':'ывжэдалфыэждшпрнгрпушцфтаешгыфтвждадтьtest_json4'
-                 ,'key5':'test_json5918347594356065709187345976230958793127598172395871239875492739аепроыфвхжаофжыдарфыдлоарофрпыалорфыралорфы'}
-    
-    return render(request, 'slides/page2.html', {'data':test_json})
+    test_json ={'page2':
+                    {'key1':'asdas., dzxc'
+                    ,'key2':'asf.,asmf.,asm'
+                    ,'key3':'lksdaflask'
+                    ,'key4':'ывжэда'
+                    ,'key5':'zxc,masdfna,m'}}
+                
+    page_key = list(test_json.keys())[0]  # Get the first key from the test_json dictionary
+    if page_key == 'page1':
+        return render(request, 'slides/page2.html', {'data':test_json[page_key]})
+    elif page_key == 'page2':
+        return render(request, 'slides/page3.html', {'data':test_json[page_key]})
+    else :
+        return render(request, 'text_box.html')
 
 
 def complite(request):
