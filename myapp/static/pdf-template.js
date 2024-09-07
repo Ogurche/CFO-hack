@@ -37,6 +37,7 @@ function generatePptx(htmlFiles) {
 
 document.getElementById("downloadPptx").addEventListener("click", function () {
   let htmlFiles = [
+    "./../static/images/city.png",
     "./../templates/slides/page1.html",
     "./../templates/slides/page2.html",
     "./../templates/slides/page3.html",
