@@ -28,10 +28,13 @@
 
       <div class="tabcontent" id="tab3" style="display: none">
         <div class="iframe-container">
-          <iframe src="./slides/page1.html"></iframe>
+          {% for page in pages %}
+          <iframe srcdoc="{{ page }}"></iframe>
+          {% endfor %}
+          <!-- <iframe src="./slides/page1.html"></iframe>
           <iframe src="./slides/page2.html"></iframe>
           <iframe src="./slides/page3.html"></iframe>
-          <iframe src="./slides/page4.html"></iframe>
+          <iframe src="./slides/page4.html"></iframe> -->
         </div>
         <button class="tab-btn" id="downloadPptx">Скачать презентацию</button>
       </div>
