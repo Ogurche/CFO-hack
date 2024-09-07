@@ -10,8 +10,7 @@
     <div class="container">
       <div class="tab">
         <button class="tabToggle" data-tab="tab1">Отчет</button>
-        <button class="tabToggle" data-tab="tab2">Генерация</button>
-        <button class="tabToggle" data-tab="tab3">Редактирование</button>
+        <button class="tabToggle" data-tab="tab3">Презентация</button>
       </div>
 
       <div class="tabcontent" id="tab1">
@@ -27,13 +26,13 @@
         </form>
       </div>
 
-      <div class="tabcontent" id="tab2" style="display: none">
-        <input type="file" id="fileInput" />
-        <button id="replaceTextButton">Replace Text</button>
-      </div>
-
       <div class="tabcontent" id="tab3" style="display: none">
-        <button id="downloadPptx">Скачать презентацию</button>
+        <div class="iframe-container">
+          <iframe src="./slides/page1.html"></iframe>
+          <iframe src="./slides/page2.html"></iframe>
+          <iframe src="./slides/page3.html"></iframe>
+        </div>
+        <button class="tab-btn" id="downloadPptx">Скачать презентацию</button>
       </div>
     </div>
   </body>

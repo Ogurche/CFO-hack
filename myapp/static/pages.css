@@ -8,7 +8,8 @@
     padding: 40px 0;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
+    justify-content: space-between;
     width: 70%;
 }
 
@@ -17,7 +18,9 @@
     border-radius: 20px;
     padding: 20px;
     display: flex;
+    align-items: center;
     gap: 20px;
+    height: 80px;
 }
 
 .cards {
@@ -25,7 +28,7 @@
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     width: 100%;
-    gap: 30px;
+    gap: 14px;
 }
 
 .card {
@@ -41,4 +44,15 @@
 
 .card--wide {
     width: 50%;
+}
+
+.page3 {
+    display: flex;
+    justify-content: space-between;
+    gap: 110px;
+}
+
+.bg-img {
+    max-width: 450px;
+    object-fit: contain;
 }
