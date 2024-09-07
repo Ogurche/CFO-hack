@@ -4,51 +4,22 @@ from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, Http404, JsonResponse
 from .models import PDFModel
 
+
 import datetime
 import os
-
-# def add_text(request):
-#     if request.method == 'POST':
-#         form = TextForm(request.POST)
-#         if form.is_valid():
-#             # form.save()
-#             return redirect('complite')
-#     else:
-#         form = TextForm()
-#     return render(request, 'add_text.html', {'form': form})
-
-# def add_pdf(request):
-#     if request.method == 'POST':
-#         form = PDFForm(request.POST, request.FILES)
-#         if form.is_valid():
-            
-#             form.save()
-#             return redirect('complite')
-#     else:
-#         form = PDFForm()
-#     return render(request, 'add_pdf.html', {'form': form})
-# Create your views here.
 
 def add_text_and_pdf(request):
     if request.method == "POST" and request.FILES.get('file'):
         file = request.FILES['file']
-    # if request.method == 'POST':
-        # form = InputForm(request.POST, request.FILES)
-        # if form.is_valid():
-        #     # text = form.cleaned_data.get('text')
-        #     pdf_file = form.cleaned_data.get('pdf_file')
-            # if text:
-                # TextModel.objects.create(text=text)
-        # pdf_file = request.FILES.get('file')
-
-        # if file:
 
         unix_timestamp = int(datetime.datetime.now().timestamp())
         filename, file_extension = os.path.splitext(file.name)
-        filename = f"{unix_timestamp}_inputfile.{file_extension}"
+        filename = f"{unix_timestamp}_inputfile{file_extension}"
         file.name = filename
-        PDFModel.objects.create(pdf_file=file)
+        pdf_model_instance = PDFModel.objects.create(pdf_file=file)
 
+        file_location = pdf_model_instance.pdf_file.path
+        
         return redirect('complite')
 
     return render(request, 'text_box.html')

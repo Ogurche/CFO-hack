@@ -9,7 +9,7 @@ class TextModel(models.Model):
         return self.text
 
 class PDFModel(models.Model):
-    pdf_file = models.FileField(upload_to='pdf_files/%Y/', verbose_name='PDF-файл')
+    pdf_file = models.FileField(upload_to='', verbose_name='PDF-файл')
 
     def __str__(self):
         return self.pdf_file.name
