@@ -56,3 +56,18 @@
     max-width: 450px;
     object-fit: contain;
 }
+
+.graphics {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.graphics-people {
+    width: 230px;
+    max-height: 347px;
+}
+
+.graphics-graph {
+    max-height: 347px;
+}
