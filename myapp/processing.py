@@ -10,9 +10,11 @@ from docx import Document
 # from reportlab.pdfbase import pdfmetrics
 # import pdfrw
 
-def process_doc_file(file_path):
+def process_doc_file(file_path) -> list:
     doc= Document(file_path)
+    res = []
+    # Получаем текст всех абзацев в документе
     # количество абзацев в документе
     for i in range(len(doc.paragraphs)):
-        print(doc.paragraphs[i].text)
-
+        res.append(doc.paragraphs[i].text)
+    return res
