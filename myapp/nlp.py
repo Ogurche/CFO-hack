@@ -6,8 +6,8 @@ from razdel import sentenize, tokenize
 from navec import Navec
 from slovnet import Morph
 
-from drawing_presets import preset_barplot, preset_pie, preset_plot
-
+from .drawing_presets import preset_barplot, preset_pie, preset_plot
+import os
 
 ### --------------------- SUMMARIZATION --------------------- ###
 def clean_text(texts):
@@ -98,8 +98,12 @@ class LanguageProcessor(object):
     def __init__(self):
         self.morph_analyzer = pymorphy2.MorphAnalyzer()
 
-        self._navec = Navec.load('nlp_assets/navec_news_v1_1B_250K_300d_100q.tar')
-        self.morph = Morph.load('nlp_assets/slovnet_morph_news_v1.tar', batch_size=4)
+        current_dir = os.path.dirname(__file__)  # Текущий каталог
+        navec_path = os.path.join(current_dir, 'nlp_assets', 'navec_news_v1_1B_250K_300d_100q.tar')
+        morth_path = os.path.join(current_dir, 'nlp_assets', 'slovnet_morph_news_v1.tar')
+
+        self._navec = Navec.load(navec_path)
+        self.morph = Morph.load(morth_path, batch_size=4)
         self.morph.navec(self._navec)
 
     def process(self, texts):
