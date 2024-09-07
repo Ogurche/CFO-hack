@@ -46,21 +46,62 @@ body {
   color: #373737;
   text-align: center;
 }
-
-.input {
+.file-input-container {
+  position: relative;
+  display: inline-block;
   background: #ffffff;
   border: none;
   width: 100%;
   height: 700px;
+  cursor: pointer;
 }
 
-.input::placeholder {
+.file-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #A7A7A7;
+  font-size: 16px;
+  font-weight: bold;
   text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.file-input-label:hover {
+  background-color: #e6f7ff;
+  border-color: #0056b3;
+}
+
+.file-input-text {
+  display: block;
 }
 
 .tab {
   display: flex;
   margin-bottom: 32px;
+}
+
+.tab-btn {
+  font-size: 14px;
+  border: none;
+  outline: none;
+  background: #1891D0;
+  color: #fff;
+  padding: 8px 16px;
+  margin-top: 20px;
 }
 
 .tabToggle {

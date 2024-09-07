@@ -15,15 +15,15 @@
       </div>
 
       <div class="tabcontent" id="tab1">
-        <form method="post" enctype="multipart/form-data"> 
+        <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
-          <input
-            class="input"
-            name="file"
-            type="file"
-            placeholder="Зона контента / приложение"
-          />
-          <button type="submit">Submit</button>
+          <div class="file-input-container">
+            <input type="file" id="fileInput" class="file-input" />
+            <label for="fileInput" class="file-input-label">
+              <span class="file-input-text">Загрузите файл отчета</span>
+            </label>
+          </div>
+          <button class="tab-btn" type="submit">Отправить файл</button>
         </form>
       </div>
 
