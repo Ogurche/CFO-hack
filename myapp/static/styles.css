@@ -1,5 +1,20 @@
+@font-face {
+  font-family: "ManropeVariable"; 
+  src: url("./fonts/ManropeVariable.ttf") format("truetype");
+  font-weight: 100 900;
+  font-style: normal; 
+}
+
 body {
+  font-family: "ManropeVariable", sans-serif;
   background: #f7f8f9;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 0;
+  border-bottom: 1px solid gray;
 }
 
 .container {
