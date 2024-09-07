@@ -26,18 +26,19 @@ def add_text_and_pdf(request):
     return render(request, 'text_box.html')
 
 def pages (request):
-    test_json ={'page2':
+    test_json ={'data':
                     {'key1':'asdas., dzxc'
-                    ,'key2':'asf.,asmf.,asm'
+                    ,'key2':'asf.,asmfфывфывфывфывыфвфывфывфывфывыфв.'
                     ,'key3':'lksdaflask'
                     ,'key4':'ывжэда'
-                    ,'key5':'zxc,masdfna,m'}}
+                    ,'key5':'zxc,mas dfna,mфывпфриттьф ырпвфыодвлфывлф'},
+                'Название': 'Аналитика'}
                 
-    page_key = list(test_json.keys())[0]  # Get the first key from the test_json dictionary
-    if page_key == 'page1':
-        return render(request, 'slides/page2.html', {'data':test_json[page_key]})
-    elif page_key == 'page2':
-        return render(request, 'slides/page3.html', {'data':test_json[page_key]})
+    page_key = test_json['Название']  # Get the first key from the test_json dictionary
+    if page_key == 'Аналитика':
+        return render(request, 'slides/page2.html', {'data':test_json['data'], 'Название':test_json['Название']})
+    elif page_key == 'Другое':
+        return render(request, 'slides/page3.html', {'data':test_json['data'], 'Название':test_json['Название']})
     else :
         return render(request, 'text_box.html')
 
