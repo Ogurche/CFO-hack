@@ -12,14 +12,13 @@ document
     const arrayBuffer = await pdfFile.arrayBuffer();
     const { PDFDocument, rgb } = PDFLib;
 
-    const replacements = {
-      "Текст": "New Text",
-      "Another Old Text": "Another New Text",
-    };
-
     const pdfDoc = await PDFDocument.load(arrayBuffer);
-    const pages = pdfDoc.getPages();
+    const fontUrl = './../static/fonts/ManropeVariable.ttf';
 
+    const fontBytes = await fetch(fontUrl).then(res => res.arrayBuffer());
+    const customFont = await pdfDoc.embedFont(fontBytes);
+
+    const pages = pdfDoc.getPages();
     for (const page of pages) {
       const { width, height } = page.getSize();
 
@@ -31,10 +30,11 @@ document
         color: rgb(1, 1, 1),
       });
 
-      page.drawText("New Text", {
+      page.drawText("Title", {
         x: 50,
         y: height - 100,
-        size: 30,
+        size: 60,
+        font: customFont,
         color: rgb(0, 0, 1),
       });
     }
