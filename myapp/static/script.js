@@ -1,14 +1,22 @@
-const tabToggles = document.querySelectorAll('.tabToggle');
-const tabContents = document.querySelectorAll('.tabcontent');
+const tabToggles = document.querySelectorAll(".tabToggle");
+const tabContents = document.querySelectorAll(".tabcontent");
+tabToggles[0].classList.add("active");
+tabContents[0].style.display = "block";
 
 tabToggles.forEach((toggle) => {
-    toggle.addEventListener('click', () => {
-        const tabId = toggle.getAttribute('data-tab');
-        
-        tabContents.forEach((content) => {
-            content.style.display = 'none';
-        });
+  toggle.addEventListener("click", () => {
+    const tabId = toggle.getAttribute("data-tab");
 
-        document.getElementById(tabId).style.display = 'block';
+    tabToggles.forEach((t) => {
+      t.classList.remove("active");
     });
+
+    toggle.classList.add("active");
+
+    tabContents.forEach((content) => {
+      content.style.display = "none";
+    });
+
+    document.getElementById(tabId).style.display = "block";
+  });
 });
