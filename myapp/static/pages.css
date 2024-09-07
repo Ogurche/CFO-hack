@@ -13,6 +13,7 @@
 }
 
 .cards-column__item {
+    background: #fff;
     border-radius: 20px;
     padding: 20px;
     display: flex;
