@@ -6,6 +6,8 @@ from razdel import sentenize, tokenize
 from navec import Navec
 from slovnet import Morph
 
+from drawing_presets import preset_barplot, preset_pie, preset_plot
+
 
 ### --------------------- SUMMARIZATION --------------------- ###
 def clean_text(texts):
@@ -67,14 +69,29 @@ def extract_numeric_entities(text, morph, morph_analyzer):
             for i in range(min(5, len(markup.tokens)-idx)):
                 next_t = markup.tokens[idx+i]
                 if next_t.pos == 'SYM' and next_t.text == "%":
-                    print("Here goes percentage logic")
                     e.pct = True
-                    break
                 elif next_t.pos == 'NOUN' and next_t.feats['Number'] == 'Plur':
                     e.update_entity(entity=next_t.text, normal_form=morph_analyzer.parse(next_t.text)[0].normal_form)
                     break
             entities += [e]
     return entities
+
+
+def process_entities(entities):
+    img_name = "graphics/img.png"
+    percentages_ent = [e for e in entities if e.pct]
+    obj_ent = [e for e in entities if not e.pct]
+    if len(percentages_ent) / len(entities) > 0.5:
+        data = [int(p.number) for p in percentages_ent]
+        labels = [p.normal_form for p in percentages_ent]
+        preset_pie(data, labels, img_name)
+    else:
+        data = [int(p.number) for p in obj_ent]
+        labels = [p.normal_form for p in obj_ent]
+        preset_barplot(data, labels, img_name)
+
+    return img_name
+
 
 ### --------------------- FULL LOGIC --------------------- ###
 class LanguageProcessor(object):
@@ -89,8 +106,30 @@ class LanguageProcessor(object):
         summarized_sentences = process_text(texts)
         keywords = get_keywords(texts, self.morph_analyzer)
         entities = extract_numeric_entities(texts, self.morph, self.morph_analyzer)
+        if len(entities) > 0:
+            img_name = process_entities(entities)
+        else: img_name = None
+
         return {
-            "summarized_sentences": summarized_sentences,
-            "keywords": keywords,
-            "num_entities": entities
+            1:{
+                "text": summarized_sentences[:len(summarized_sentences) // 2],
+                "path": None
+            },
+            2:{
+                "text": summarized_sentences[len(summarized_sentences) // 2:],
+                "path": None
+            },
+            3:{
+                "text": None,
+                "path": img_name
+            },
         }
+  
+
+if __name__ == '__main__':
+    lp = LanguageProcessor()
+    with open("nlp_assets/text.txt", 'r', encoding='utf-8') as f:
+        text = f.read()
+
+    result = lp.process(text)
+    print(result)
