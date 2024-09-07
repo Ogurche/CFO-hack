@@ -1,5 +1,5 @@
 .cards-row {
-    padding: 40px 0;
+    padding: 70px 0 0;
     display: flex;
     gap: 30px;
 }
@@ -13,7 +13,6 @@
 }
 
 .cards-column__item {
-    box-shadow: 1px 1px gray;
     border-radius: 20px;
     padding: 20px;
     display: flex;
@@ -31,10 +30,9 @@
 .card {
     width: 90%;
     background: #fff;
-    min-height: 360px;
-    box-shadow: 1px 1px gray;
+    min-height: 280px;
     border-radius: 20px;
-    padding: 20px;
+    padding: 30px 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
