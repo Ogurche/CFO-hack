@@ -1,0 +1,54 @@
+body {
+  background: #f7f8f9;
+}
+
+.container {
+  padding-top: 50px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.input {
+  background: #ffffff;
+  border: none;
+  width: 100%;
+  height: 700px;
+}
+
+.input::placeholder {
+  text-align: center;
+}
+
+.tab {
+  display: flex;
+  margin-bottom: 32px;
+}
+
+.tabToggle {
+  float: left;
+  background: none;
+  color: #ABB5C3;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 28px;
+  font-weight: 600;
+  padding: 6px 10px;
+  transition: 0.3s;
+
+  &:not(:last-child) {
+    border-right: 1px solid #ABB5C3;
+  }
+}
+
+.tab button:hover {
+  color: #21252D;
+}
+
+.tab button.active {
+  color: #21252D;
+}
+
+.tabcontent {
+  display: none;
+}
