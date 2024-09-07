@@ -4,6 +4,7 @@ from .models import TextModel, PDFModel
 class InputForm(forms.Form):
     text = forms.CharField(widget=forms.Textarea, required=False)
     pdf_file = forms.FileField(required=False)
+    
 
 class TextForm(forms.ModelForm):
     class Meta:

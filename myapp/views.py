@@ -30,25 +30,28 @@ import os
 # Create your views here.
 
 def add_text_and_pdf(request):
-    if request.method == 'POST':
-        form = InputForm(request.POST, request.FILES)
-        if form.is_valid():
-            text = form.cleaned_data.get('text')
-            pdf_file = form.cleaned_data.get('pdf_file')
+    if request.method == "POST" and request.FILES.get('file'):
+        file = request.FILES['file']
+    # if request.method == 'POST':
+        # form = InputForm(request.POST, request.FILES)
+        # if form.is_valid():
+        #     # text = form.cleaned_data.get('text')
+        #     pdf_file = form.cleaned_data.get('pdf_file')
             # if text:
                 # TextModel.objects.create(text=text)
-            if pdf_file:
+        # pdf_file = request.FILES.get('file')
 
-                unix_timestamp = int(datetime.datetime.now().timestamp())
-                filename, file_extension = os.path.splitext(pdf_file.name)
-                filename = f"{unix_timestamp}_inputfile.{file_extension}"
-                pdf_file.name = filename
-                PDFModel.objects.create(pdf_file=pdf_file)
-                # PDFModel.objects.create(pdf_file=pdf_file)
-            return redirect('complite')
-    else:
-        form = InputForm()
-    return render(request, 'add_text_pdf.html', {'form': form})
+        # if file:
+
+        unix_timestamp = int(datetime.datetime.now().timestamp())
+        filename, file_extension = os.path.splitext(file.name)
+        filename = f"{unix_timestamp}_inputfile.{file_extension}"
+        file.name = filename
+        PDFModel.objects.create(pdf_file=file)
+
+        return redirect('complite')
+
+    return render(request, 'text_box.html')
 
 def complite(request):
     return render(request, 'complite.html')
