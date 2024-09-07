@@ -119,8 +119,13 @@ body {
   cursor: pointer;
   font-size: 28px;
   font-weight: 600;
-  padding: 6px 10px;
+  padding: 6px 20px;
   transition: 0.3s;
+  text-transform: uppercase;
+
+  &:first-child {
+    padding-left: 0;
+  }
 
   &:not(:last-child) {
     border-right: 1px solid #ABB5C3;
