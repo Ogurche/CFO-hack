@@ -37,11 +37,11 @@ body {
 }
 
 .main-title {
-  font-size: 50px;
+  font-size: 40px;
   font-weight: 700;
   color: #0069F9;
   text-align: center;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 40px auto;
 }
 
@@ -57,7 +57,7 @@ body {
   background: #ffffff;
   border: none;
   width: 100%;
-  height: 700px;
+  height: 300px;
   cursor: pointer;
 }
 
@@ -96,7 +96,6 @@ body {
 
 .tab {
   display: flex;
-  margin-bottom: 32px;
 }
 
 .tab-btn {
@@ -108,6 +107,8 @@ body {
   padding: 8px 16px;
   margin: 20px 0;
   cursor: pointer;
+  border-radius: 10px;
+  height: 38px;
 }
 
 .tabToggle {
@@ -117,11 +118,10 @@ body {
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 600;
   padding: 6px 20px;
   transition: 0.3s;
-  text-transform: uppercase;
 
   &:first-child {
     padding-left: 0;
@@ -133,11 +133,11 @@ body {
 }
 
 .tab button:hover {
-  color: #21252D;
+  color: #1BA2E8;
 }
 
 .tab button.active {
-  color: #21252D;
+  color: #1BA2E8;
 }
 
 .tabcontent {
@@ -153,4 +153,37 @@ iframe {
   border: none;
   width: 100%;
   height: 1000px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  margin-bottom: 32px;
+}
+
+.switch {
+  display: flex;
+  align-items: center;
+}
+
+.switch-item {
+  padding: 8px 16px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 132px;
+}
+
+.switch-item--left {
+  color: #fff;
+  background: #1891D0;
+  border-radius: 10px 0 0 10px;
+}
+
+.switch-item--right {
+  color: #373737;
+  background: #0000000A;
+  border-radius: 0 10px 10px 0;
 }

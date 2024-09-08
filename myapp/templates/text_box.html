@@ -8,18 +8,24 @@
   </head>
   <body>
     <div class="container">
-      <div class="tab">
-        <button class="tabToggle" data-tab="tab1">Отчет</button>
-        <button class="tabToggle" data-tab="tab3">Презентация</button>
+      <div class="top">
+        <div class="tab">
+          <button class="tabToggle" data-tab="tab1">Отчет</button>
+          <button class="tabToggle" data-tab="tab3">Презентация</button>
+        </div>
+        <div class="switch">
+          <div class="switch-item switch-item--left">Быстрый</div>
+          <div class="switch-item switch-item--right">Качественный</div>
+        </div>
       </div>
 
       <div class="tabcontent" id="tab1">
         <form method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="file-input-container">
-            <input type="file" id="fileInput" name=file" class="file-input" />
+            <input type="file" id="fileInput" name="file" class="file-input" />
             <label for="fileInput" class="file-input-label">
-              <span class="file-input-text">Загрузите файл отчета</span>
+              <span class="file-input-text">Выберите файл</span>
             </label>
           </div>
           <button class="tab-btn" type="submit">Отправить файл</button>
