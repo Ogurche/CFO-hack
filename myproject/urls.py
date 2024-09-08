@@ -26,7 +26,7 @@ urlpatterns = [
     # path('add_text/', views.add_text, name='add_text'),
     # path('add_pdf/', views.add_pdf, name='add_pdf'),
     path('complete/', views.complite, name='complite'),
-    path('page2/', views.pages, name='page2'),
+    # path('page2/', views.pages, name='page2'),
 ]   
 
 

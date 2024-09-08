@@ -78,26 +78,30 @@ def extract_numeric_entities(text, morph, morph_analyzer):
 
 
 def process_entities(entities):
-    img_name = "graphics/img.png"
+    img_name = "myapp/graphics/img.png"
     percentages_ent = [e for e in entities if e.pct]
     obj_ent = [e for e in entities if not e.pct]
     if len(percentages_ent) / len(entities) > 0.5:
         data = []
+        labels = []
         for p in percentages_ent:
             try:
-                data += [int(p.number)]
+                data.append(int(p.number))  # Изменено на append
+                labels.append(p.normal_form)  # Изменено на append
             except:
                 print("convertation error, skipping this one")
-        labels = [p.normal_form for p in percentages_ent]
+        # labels = [p.normal_form for p in percentages_ent]
         preset_pie(data, labels, img_name)
     else:
         data = []
+        labels = []
         for p in obj_ent:
             try:
-                data += [int(p.number)]
+                data.append(int(p.number))  # Изменено на append
+                labels.append(p.normal_form)  # Изменено на append
             except:
                 print("convertation error, skipping this one")
-        labels = [p.normal_form for p in obj_ent]
+        # labels = [p.normal_form for p in obj_ent]
         preset_barplot(data, labels, img_name)
 
     return img_name
