@@ -82,11 +82,21 @@ def process_entities(entities):
     percentages_ent = [e for e in entities if e.pct]
     obj_ent = [e for e in entities if not e.pct]
     if len(percentages_ent) / len(entities) > 0.5:
-        data = [int(p.number) for p in percentages_ent]
+        data = []
+        for p in percentages_ent:
+            try:
+                data += [int(p.number)]
+            except:
+                print("convertation error, skipping this one")
         labels = [p.normal_form for p in percentages_ent]
         preset_pie(data, labels, img_name)
     else:
-        data = [int(p.number) for p in obj_ent]
+        data = []
+        for p in obj_ent:
+            try:
+                data += [int(p.number)]
+            except:
+                print("convertation error, skipping this one")
         labels = [p.normal_form for p in obj_ent]
         preset_barplot(data, labels, img_name)
 
